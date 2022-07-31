@@ -24,11 +24,11 @@ namespace EAuction.Products.Api.Entities
         public DateTime BidEndDate { get; set; }
 
         [Required(ErrorMessage = "Seller First Name is required")]
-        [StringLength(30, MinimumLength = 5, ErrorMessage = "Product name should contain 5 to 30 characters")]
+        [StringLength(30, MinimumLength = 5, ErrorMessage = "First name should contain 5 to 30 characters")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "Seller Last Name is required")]
-        [StringLength(25, MinimumLength = 3, ErrorMessage = "Product name should contain 3 to 25 characters")]
+        [StringLength(25, MinimumLength = 3, ErrorMessage = "Seller Last name should contain 3 to 25 characters")]
         public string LastName { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
