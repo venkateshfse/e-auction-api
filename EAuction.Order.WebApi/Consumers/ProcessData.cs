@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EAuction.Order.Application.Commands.OrderCreate;
 using EAuction.Order.Application.Responses;
+using EventBusAzureServiceBus.Abstractions;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace EAuction.Order.WebApi.Consumers
 {
-    public class ProcessData   
-        {
+    public class ProcessData : IProcessData
+    {
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
         public ProcessData(IMediator mediator, IMapper mapper)

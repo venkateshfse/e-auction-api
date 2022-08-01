@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAuction.APIGateway", "EAuc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAuction.Products.Api", "EAuction.Products.Api\EAuction.Products.Api.csproj", "{9DC0D0D6-0EAC-4CFA-B4D1-34FD3593D88F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBusAzureServiceBus", "EventBusAzureServiceBus\EventBusAzureServiceBus.csproj", "{F80FF004-8728-450B-9CEF-70CD69142919}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{9DC0D0D6-0EAC-4CFA-B4D1-34FD3593D88F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DC0D0D6-0EAC-4CFA-B4D1-34FD3593D88F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DC0D0D6-0EAC-4CFA-B4D1-34FD3593D88F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F80FF004-8728-450B-9CEF-70CD69142919}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F80FF004-8728-450B-9CEF-70CD69142919}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F80FF004-8728-450B-9CEF-70CD69142919}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F80FF004-8728-450B-9CEF-70CD69142919}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +86,7 @@ Global
 		{7853896A-E85D-4876-9E98-CA6582C40608} = {30535B84-0D3F-40C9-90E8-0FD06B1BC917}
 		{20D2CAFB-84DD-422A-BFAF-0F38E4F014C5} = {C0BEC6A4-68AB-4291-A60E-424EBE1E3EB3}
 		{9DC0D0D6-0EAC-4CFA-B4D1-34FD3593D88F} = {52A6980A-1FE7-4E73-A334-6DCFDB807C9D}
+		{F80FF004-8728-450B-9CEF-70CD69142919} = {BDCD6BB4-A1FD-4516-9119-B942D0B504C6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9149BBF1-8C7B-4B5D-9FBC-9C2B66DDE4A3}

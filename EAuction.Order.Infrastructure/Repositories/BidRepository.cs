@@ -19,12 +19,6 @@ namespace EAuction.Order.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Bid>> GetBidsByProductId(string productId)
-        {
-            var bidList = await _context.Bids.Find(o => o.ProductId == productId).ToListAsync();
-            return bidList;
-        }
-
         public async Task<Bid> SendBid(Bid bid)
         {
             var result = await _context.Bids.Find(p => p.ProductId == bid.ProductId && p.Email.ToLower() == bid.Email.ToLower()).FirstOrDefaultAsync();
@@ -45,11 +39,6 @@ namespace EAuction.Order.Infrastructure.Repositories
         {
             var result = await _context.Bids.Find(p => p.ProductId == productId).ToListAsync();
             return result;
-        }
-
-        public async Task<Bid> GetBid(string productId, string buyerEmailId)
-        {
-            return await _context.Bids.Find(p => p.ProductId == productId && p.Email == buyerEmailId).FirstOrDefaultAsync();
         }
 
         public async Task<bool> UpdateBidAmount(string productId, string buyerEmailId, decimal newBidAmount)

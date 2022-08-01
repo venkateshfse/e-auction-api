@@ -9,8 +9,8 @@ using MediatR;
 
 namespace EAuction.Order.Application.Handlers
 {
-    public class GetBidsByProductIdHandler : IRequestHandler<GetBidsByProductIdQuery, IEnumerable<BidResponse>>,
-                                        IRequestHandler<GetBidsByProductIdAndEmailIdQuery, BidResponse>
+    public class GetBidsByProductIdHandler : IRequestHandler<GetBidsByProductIdQuery, IEnumerable<BidResponse>>
+                                     
     {
         private readonly IBidRepository _bidRepository;
         private readonly IMapper _mapper;
@@ -25,15 +25,6 @@ namespace EAuction.Order.Application.Handlers
             var bidList = await _bidRepository.GetBids(request.ProductId);
 
             var response = _mapper.Map<IEnumerable<BidResponse>>(bidList);
-
-            return response;
-        }
-
-        public async Task<BidResponse> Handle(GetBidsByProductIdAndEmailIdQuery request, CancellationToken cancellationToken)
-        {
-            var bidList = await _bidRepository.GetBid(request.ProductId, request.BuyerEmailId);
-
-            var response = _mapper.Map<BidResponse>(bidList);
 
             return response;
         }

@@ -1,8 +1,11 @@
+using EAuction.Bid.WebApi.Messaging;
 using EAuction.Order.Application.IOC;
 using EAuction.Order.Infrastructure.IOC;
 using EAuction.Order.Infrastructure.Settings;
 using EAuction.Order.WebApi.Consumers;
 using EAuction.Products.Api.Settings;
+using EventBusAzureServiceBus;
+using EventBusAzureServiceBus.Abstractions;
 using EventBusRabbitMQ;
 using EventBusRabbitMQ.Producer;
 using Microsoft.AspNetCore.Builder;
@@ -80,10 +83,10 @@ namespace EAuction.Order.WebApi
 
             services.AddSingleton<EventBusRabbitMQProducer>();
             services.AddSingleton<EventBusBidCreateConsumer>();
-            //services.AddTransient<IProcessData, ProcessData>();
-            //services.AddTransient<ITopicSender, TopicSender>();
-            //services.AddTransient<ITopicSubscription, TopicSubscription>();
-            //services.AddHostedService<Worker_AzureServiceBus>();
+            services.AddTransient<IProcessData, ProcessData>();
+            services.AddTransient<ITopicSender, TopicSender>();
+            services.AddTransient<ITopicSubscription, TopicSubscription>();
+            services.AddHostedService<Worker_AzureServiceBus>();
             #endregion
 
             #region Swagger Dependencies

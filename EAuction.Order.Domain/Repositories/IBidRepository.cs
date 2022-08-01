@@ -7,10 +7,8 @@ namespace EAuction.Order.Domain.Repositories
 {
     public interface IBidRepository
     {
-        Task<IEnumerable<Entities.Bid>> GetBidsByProductId(string userName);
         Task<Bid> SendBid(Bid bid);
         Task<IEnumerable<Bid>> GetBids(string productId);
-        Task<Bid> GetBid(string productId, string buyerEmailId);
         Task<bool> UpdateBidAmount(string productId, string buyerEmailId, decimal newBidAmount);
     }
 }

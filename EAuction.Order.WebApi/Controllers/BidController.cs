@@ -13,6 +13,7 @@ using EAuction.Order.Application.Responses;
 using EAuction.Order.Domain.Entities;
 using EAuction.Order.Domain.Repositories;
 using EAuction.Products.Api.Repositories.Abstractions;
+using EventBusAzureServiceBus.Abstractions;
 using EventBusRabbitMQ.Core;
 using EventBusRabbitMQ.Events;
 using EventBusRabbitMQ.Producer;
@@ -28,7 +29,8 @@ namespace EAuction.Order.WebApi.Controllers
     {
         private readonly IMediator _mediator;
         private readonly ILogger<BidController> _logger;
-        private readonly IMapper _mapper;   
+        private readonly IMapper _mapper;
+        private readonly ITopicSender _eventBus;
         private readonly IBidRepository _bidRepository;
         private readonly IProductRepository _productRepository;
 
@@ -36,12 +38,14 @@ namespace EAuction.Order.WebApi.Controllers
         public BidController(IMediator mediator,
             ILogger<BidController> logger,
             IMapper mapper,
+              ITopicSender eventBus,
               IBidRepository bidRepository,
             IProductRepository productRepository)
         {
             _mediator = mediator;
             _logger = logger;
             _mapper = mapper;
+            _eventBus = eventBus;
             _bidRepository = bidRepository;
             _productRepository = productRepository;
         }
@@ -62,22 +66,6 @@ namespace EAuction.Order.WebApi.Controllers
             return Ok(bids);
         }
 
-        [HttpGet("GetBid/{productId}/{buyerEmailId}")]
-        [ProducesResponseType(typeof(IEnumerable<BidResponse>), (int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        public async Task<ActionResult<IEnumerable<BidResponse>>> GetBidByProductIdAndEmailId(string productId, string buyerEmailId)
-        {
-            var query = new GetBidsByProductIdAndEmailIdQuery(productId, buyerEmailId);
-            var bid = await _mediator.Send(query);
-
-            if (bid == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(bid);
-        }
-
         [HttpPost("PlaceBid")]
         [ProducesResponseType(typeof(EAuction.Order.Domain.Entities.Bid), (int)HttpStatusCode.Created)]
         public async Task<ActionResult<BidResponse>> BidCreate([FromBody] BidCreateCommand bidCreateCommand)
@@ -87,7 +75,7 @@ namespace EAuction.Order.WebApi.Controllers
 
             try
             {
-                //await _eventBus.SendMessage(eventMessage);
+                await _eventBus.SendMessage(eventMessage);
             }
             catch (Exception ex)
             {
@@ -112,6 +100,6 @@ namespace EAuction.Order.WebApi.Controllers
 
             return Ok(await _mediator.Send(updateCommand));
         }
-               
+
     }
 }

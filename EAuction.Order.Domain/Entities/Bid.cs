@@ -24,8 +24,8 @@ namespace EAuction.Order.Domain.Entities
         [RegularExpression(@"^([0-9]{10})$", ErrorMessage = "Invalid Mobile Number.")]
         public long Phone { get; set; }
 
-        [Required(ErrorMessage = "Seller email is required")]
-        [EmailAddress(ErrorMessage = "Seller email is not valid")]
+        [Required(ErrorMessage = "Buyer email is required")]
+        [EmailAddress(ErrorMessage = "Buyer email is not valid")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Product Id cannot be empty")]

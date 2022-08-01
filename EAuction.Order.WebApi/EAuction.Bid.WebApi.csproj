@@ -20,6 +20,7 @@
     <ProjectReference Include="..\EAuction.Order.Application\EAuction.Bid.Application.csproj" />
     <ProjectReference Include="..\EAuction.Order.Infrastructure\EAuction.Bid.Infrastructure.csproj" />
     <ProjectReference Include="..\EAuction.Products.Api\EAuction.Products.Api.csproj" />
+    <ProjectReference Include="..\EventBusAzureServiceBus\EventBusAzureServiceBus.csproj" />
     <ProjectReference Include="..\EventBusRabbitMQ\EventBusRabbitMQ.csproj" />
   </ItemGroup>
 
