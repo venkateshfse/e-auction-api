@@ -29,6 +29,37 @@ namespace EAuction.Products.Api.Controllers
         }
         #endregion
         #region CRUD_Actions
+        [HttpGet("GetAllProducts")]
+        [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        {
+            var products = await _productRepository.GetProducts();
+
+            return Ok(products);
+        }
+
+        [HttpGet("GetProductsUploadedBy/{emailId}")]
+        [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsUploadedBy(string emailId)
+        {
+            var products = await _productRepository.GetProductsUploadedBy(emailId);
+
+            return Ok(products);
+        }
+        [HttpGet("GetProduct/{id}")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<Product>> GetProduct(string id)
+        {
+            var product = await _productRepository.GetProduct(id);
+            if (product == null)
+            {
+                _logger.LogError($"Product with id : {id}, has not been found in database.");
+                return NotFound();
+            }
+
+            return Ok(product);
+        }
 
         [HttpPost("CreateProduct")]     
         [ProducesResponseType(typeof(Product), (int) HttpStatusCode.Created)]

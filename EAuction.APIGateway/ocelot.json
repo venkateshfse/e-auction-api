@@ -18,6 +18,54 @@
       "UpstreamHttpMethod": [ "POST" ]
     },
     {
+      "DownstreamPathTemplate": "/api/v1/Products/GetProductsUploadedBy/{emailId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 36886
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "eauction_auth_scheme",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/e-auction/api/v1/seller/get-products/{emailId}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Products/GetAllProducts",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 36886
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "eauction_auth_scheme",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/e-auction/api/v1/seller/get-all-products",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/v1/Products/GetProduct/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 36886
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "eauction_auth_scheme",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/e-auction/api/v1/seller/get-product/{id}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
       "DownstreamPathTemplate": "/api/v1/Products/DeleteProduct/{productId}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -63,7 +111,7 @@
         "AuthenticationProviderKey": "eauction_auth_scheme",
         "AllowedScopes": []
       },
-      "UpstreamPathTemplate": "/e-auction/api/v1/seller/show-bids/{productId}",
+      "UpstreamPathTemplate": "/e-auction/api/v1/buyer/show-bids/{productId}",
       "UpstreamHttpMethod": [ "GET" ]
     },
     {

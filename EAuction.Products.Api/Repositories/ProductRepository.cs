@@ -17,6 +17,17 @@ namespace EAuction.Products.Api.Repositories
             _context = context;
         }
 
+        public async Task<IEnumerable<Product>> GetProducts()
+        {
+            var result = await _context.Products.Find(p => true && p.BidEndDate >= DateTime.Now).ToListAsync();
+            return result;
+        }
+        public async Task<IEnumerable<Product>> GetProductsUploadedBy(string mailId)
+        {
+            var result = await _context.Products.Find(p => p.Email == mailId).ToListAsync();
+            return result;
+        }
+
         public async Task<Product> GetProduct(string id)
         {
             var result = await _context.Products.Find(p => p.Id == id).FirstOrDefaultAsync();
